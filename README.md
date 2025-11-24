@@ -50,59 +50,43 @@ The final submission is the average of the best 2 models.
 
 The winning solution employs a **dual-backbone fusion architecture** that combines:
 
--**CLIP (Vision-Language Model)**: `openai/clip-vit-large-patch14` for image-text understanding
+- **CLIP (Vision-Language Model)**: `openai/clip-vit-large-patch14` for image-text understanding
 
--**DistilBERT**: `distilbert-base-uncased-finetuned-sst-2-english` for enhanced text processing
+- **DistilBERT**: `distilbert-base-uncased-finetuned-sst-2-english` for enhanced text processing
 
--**Contrastive Learning**: Multiple InfoNCE losses for representation learning
+- **Contrastive Learning**: Multiple InfoNCE losses for representation learning
 
--**Fusion Head**: Multi-layer perceptron combining all modalities
+- **Fusion Head**: Multi-layer perceptron combining all modalities
 
 ### 1.2 Model Architecture Details
 
 ```
-
 Input: Product Text + Product Image
-
     ↓
-
-┌─────────────────┬─────────────────┐
-
-│   CLIP Branch   │ DistilBERT Branch│
-
-│                 │                 │
-
-│ Text → CLIP     │ Text → Distil   │
-
-│ Image → CLIP    │ (2 augmented    │
-
-│                 │  views)         │
-
-└─────────────────┴─────────────────┘
-
+┌─────────────────┬───────────────────┐
+│   CLIP Branch   │ DistilBERT Branch │
+│                 │                   │
+│ Text → CLIP     │ Text → Distil     │
+│ Image → CLIP    │ (2 augmented      │
+│                 │  views)           │
+└─────────────────┴───────────────────┘
     ↓
-
 ┌─────────────────────────────────────┐
-
 │        Feature Fusion               │
-
 │ [norm(img_clip), norm(txt_clip),    │
-
 │  norm(distil_proj)] → MLP → Price   │
-
 └─────────────────────────────────────┘
-
 ```
 
 ### 1.3 Key Technical Innovations
 
 #### Multi-Modal Feature Extraction
 
--**CLIP Text Features**: 768-dimensional embeddings from product descriptions
+- **CLIP Text Features**: 768-dimensional embeddings from product descriptions
 
--**CLIP Image Features**: 768-dimensional visual representations from product images
+- **CLIP Image Features**: 768-dimensional visual representations from product images
 
--**DistilBERT Features**: 256-dimensional projected embeddings from text (two augmented views)
+- **DistilBERT Features**: 256-dimensional projected embeddings from text (two augmented views)
 
 #### Advanced Contrastive Learning
 
@@ -120,15 +104,15 @@ Input: Product Text + Product Image
 
 #### Robust Training Strategy
 
--**Multi-Loss Optimization**: Combines regression (Huber loss) with contrastive losses
+- **Multi-Loss Optimization**: Combines regression (Huber loss) with contrastive losses
 
--**Missing Image Handling**: Zero-padding policy for missing images
+- **Missing Image Handling**: Zero-padding policy for missing images
 
--**Log2 Price Transformation**: Handles price distribution skewness
+- **Log2 Price Transformation**: Handles price distribution skewness
 
--**Gradient Accumulation**: Batch size 16 with gradient accumulation
+- **Gradient Accumulation**: Batch size 16 with gradient accumulation
 
--**Mixed Precision Training**: FP16 for memory efficiency
+- **Mixed Precision Training**: FP16 for memory efficiency
 
 ### 1.4 Training Configuration
 
@@ -137,37 +121,24 @@ Input: Product Text + Product Image
 # Model Parameters
 
 - CLIP Model: openai/clip-vit-large-patch14
-
 - DistilBERT: distilbert-base-uncased-finetuned-sst-2-english
-
 - Total Parameters: 501,196,546 trainable parameters
-
 - Fusion Head: 2x hidden dimension expansion
-
 
 # Training Hyperparameters
 
 - Learning Rate: 2e-5
-
 - Batch Size: 16
-
 - Epochs: 15
-
 - Warmup Ratio: 6%
-
 - Weight Decay: 0.01
-
 - Max Gradient Norm: 1.0
-
 
 # Loss Weights
 
 - Regression Loss: 1.0(Huber loss, δ=1.0)
-
 - CLIP Contrastive: 0.20
-
 - DistilBERT Contrastive: 0.10
-
 ```
 
 ### 1.5 Data Processing Pipeline
@@ -208,9 +179,9 @@ Input: Product Text + Product Image
 
 **Approaches:**
 
--**13 Oct 25, 08:27 AM IST (41.541%)**: `openai/clip-vit-large-patch14-336` with 10 epochs
+- **13 Oct 25, 08:27 AM IST (41.541%)**: `openai/clip-vit-large-patch14-336` with 10 epochs
 
--**12 Oct 25, 11:28 PM IST (42.234%)**: `openai/clip-vit-large-patch14` with 5 epochs
+- **12 Oct 25, 11:28 PM IST (42.234%)**: `openai/clip-vit-large-patch14` with 5 epochs
 
 **Key Features:**
 
@@ -225,9 +196,9 @@ Input: Product Text + Product Image
 
 **Approaches:**
 
--**12 Oct 25, 09:02 PM IST (48.624%)**: `google-bert/bert-large-uncased` with contrastive learning
+- **12 Oct 25, 09:02 PM IST (48.624%)**: `google-bert/bert-large-uncased` with contrastive learning
 
--**12 Oct 25, 08:20 PM IST (45.429%)**: `distilbert-base-uncased-finetuned-sst-2-english`
+- **12 Oct 25, 08:20 PM IST (45.429%)**: `distilbert-base-uncased-finetuned-sst-2-english`
 
 **Key Features:**
 
@@ -242,11 +213,11 @@ Input: Product Text + Product Image
 
 **Approaches:**
 
--**12 Oct 25, 12:00 AM IST (50.702%)**: `intfloat/e5-base-v2` embeddings
+- **12 Oct 25, 12:00 AM IST (50.702%)**: `intfloat/e5-base-v2` embeddings
 
--**11 Oct 25, 11:52 PM IST (50.935%)**: `intfloat/e5-base-v2` embeddings
+- **11 Oct 25, 11:52 PM IST (50.935%)**: `intfloat/e5-base-v2` embeddings
 
--**11 Oct 25, 05:06 PM IST (57.402%)**: `Qwen/Qwen3-Embedding-0.6B` with LightGBM
+- **11 Oct 25, 05:06 PM IST (57.402%)**: `Qwen/Qwen3-Embedding-0.6B` with LightGBM
 
 **Key Features:**
 
@@ -261,9 +232,9 @@ Input: Product Text + Product Image
 
 **Approaches:**
 
--**11 Oct 25, 11:29 PM IST (51.491%)**: LightGBM with comprehensive feature engineering
+- **11 Oct 25, 11:29 PM IST (51.491%)**: LightGBM with comprehensive feature engineering
 
--**11 Oct 25, 11:52 PM IST (50.935%)**: E5 embeddings with LightGBM
+- **11 Oct 25, 11:52 PM IST (50.935%)**: E5 embeddings with LightGBM
 
 **Key Features:**
 
@@ -280,31 +251,85 @@ Input: Product Text + Product Image
 
 ### 3.1 SMAPE Score Ranking - Personal
 
-| Rank | Date | SMAPE | Approach |
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Date</th>
+      <th>SMAPE</th>
+      <th>Approach</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>13 Oct 25, 08:59 PM</td>
+      <td><strong>40.777%</strong></td>
+      <td>CLIP + DistilBERT Fusion</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>13 Oct 25, 08:27 AM</td>
+      <td>41.541%</td>
+      <td>CLIP Large (10 epochs)</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>13 Oct 25, 05:50 PM</td>
+      <td>42.006%</td>
+      <td>CLIP + E5 Embeddings</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>12 Oct 25, 11:28 PM</td>
+      <td>42.234%</td>
+      <td>CLIP Large (5 epochs)</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>12 Oct 25, 09:02 PM</td>
+      <td>48.624%</td>
+      <td>BERT Large</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>12 Oct 25, 08:20 PM</td>
+      <td>45.429%</td>
+      <td>DistilBERT SST-2</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>12 Oct 25, 04:33 PM</td>
+      <td>45.852%</td>
+      <td>DistilBERT Base</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>12 Oct 25, 12:00 AM</td>
+      <td>50.702%</td>
+      <td>E5 Base v2</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>11 Oct 25, 11:52 PM</td>
+      <td>50.935%</td>
+      <td>E5 Base v2</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>11 Oct 25, 11:29 PM</td>
+      <td>51.491%</td>
+      <td>LightGBM + Features</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>11 Oct 25, 05:06 PM</td>
+      <td>57.402%</td>
+      <td>Qwen Embeddings</td>
+    </tr>
+  </tbody>
+</table>
 
-|------|------|-------|----------|
-
-| 1 | 13 Oct 25, 08:59 PM | **40.777%** | CLIP + DistilBERT Fusion |
-
-| 2 | 13 Oct 25, 08:27 AM | 41.541% | CLIP Large (10 epochs) |
-
-| 3 | 13 Oct 25, 05:50 PM | 42.006% | CLIP + E5 Embeddings |
-
-| 4 | 12 Oct 25, 11:28 PM | 42.234% | CLIP Large (5 epochs) |
-
-| 5 | 12 Oct 25, 09:02 PM | 48.624% | BERT Large |
-
-| 6 | 12 Oct 25, 08:20 PM | 45.429% | DistilBERT SST-2 |
-
-| 7 | 12 Oct 25, 04:33 PM | 45.852% | DistilBERT Base |
-
-| 8 | 12 Oct 25, 12:00 AM | 50.702% | E5 Base v2 |
-
-| 9 | 11 Oct 25, 11:52 PM | 50.935% | E5 Base v2 |
-
-| 10 | 11 Oct 25, 11:29 PM | 51.491% | LightGBM + Features |
-
-| 11 | 11 Oct 25, 05:06 PM | 57.402% | Qwen Embeddings |
 
 ### 3.2 Key Insights
 
@@ -362,19 +387,49 @@ This approach provides a strong foundation for production deployment and can be 
 
 ### A. Model Comparison Summary
 
-| Approach Type | Best SMAPE | Key Components | Limitations |
+<table>
+  <thead>
+    <tr>
+      <th>Approach Type</th>
+      <th>Best SMAPE</th>
+      <th>Key Components</th>
+      <th>Limitations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Multi-Modal Fusion</td>
+      <td><strong>40.777%</strong></td>
+      <td>CLIP + DistilBERT + Contrastive</td>
+      <td>High computational cost</td>
+    </tr>
+    <tr>
+      <td>CLIP-Only</td>
+      <td>41.541%</td>
+      <td>Single CLIP model</td>
+      <td>Limited text processing</td>
+    </tr>
+    <tr>
+      <td>BERT-Only</td>
+      <td>45.429%</td>
+      <td>Text-only processing</td>
+      <td>No visual information</td>
+    </tr>
+    <tr>
+      <td>Embedding + ML</td>
+      <td>50.702%</td>
+      <td>Static embeddings + LightGBM</td>
+      <td>No end-to-end learning</td>
+    </tr>
+    <tr>
+      <td>Feature Engineering</td>
+      <td>51.491%</td>
+      <td>Manual features + LightGBM</td>
+      <td>Limited representation</td>
+    </tr>
+  </tbody>
+</table>
 
-|---------------|------------|----------------|-------------|
-
-| Multi-Modal Fusion | **40.777%** | CLIP + DistilBERT + Contrastive | High computational cost |
-
-| CLIP-Only | 41.541% | Single CLIP model | Limited text processing |
-
-| BERT-Only | 45.429% | Text-only processing | No visual information |
-
-| Embedding + ML | 50.702% | Static embeddings + LightGBM | No end-to-end learning |
-
-| Feature Engineering | 51.491% | Manual features + LightGBM | Limited representation |
 
 ### B. Technical Specifications
 
