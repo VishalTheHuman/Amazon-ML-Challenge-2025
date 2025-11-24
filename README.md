@@ -1,7 +1,9 @@
 # Amazon ML Challenge 2025: Smart Product Pricing Challenge
 
-**Team Name:** CTRL + ALT + DEV  
-**Rank :** 8 ([Results Link](https://docs.google.com/spreadsheets/d/e/2PACX-1vSA000odhpNXaEJTqAdDbwSj3T_fjH-w7QTCrCPIP54VL0bQUTVvok4hVFRpPCwsYTXY0BAvEUDQ2XS/pubhtml))  
+**Team Name:** CTRL + ALT + DEV   
+**Rank :** 8   ([Result Link](https://docs.google.com/spreadsheets/d/e/2PACX-1vSA000odhpNXaEJTqAdDbwSj3T_fjH-w7QTCrCPIP54VL0bQUTVvok4hVFRpPCwsYTXY0BAvEUDQ2XS/pubhtml))  
+  
+<img width="100%" height="100%" alt="image" src="https://github.com/user-attachments/assets/ea0b8c6b-b6f2-45d7-86f8-22e26f42ca43" />
 
 ## Contributors
 
@@ -25,6 +27,7 @@
 	<td><b style="display:block; margin:auto;">Suriya KP</b></td>
     </tr>
 </table>
+
 
 **Submission Date:** 13 October 2025
 
