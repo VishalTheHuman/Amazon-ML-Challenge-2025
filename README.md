@@ -3,12 +3,28 @@
 **Team Name:** CTRL + ALT + DEV  
 **Rank :** 8 ([Results Link](https://docs.google.com/spreadsheets/d/e/2PACX-1vSA000odhpNXaEJTqAdDbwSj3T_fjH-w7QTCrCPIP54VL0bQUTVvok4hVFRpPCwsYTXY0BAvEUDQ2XS/pubhtml))  
 
-**Team Members:** 
+## Contributors
 
-- Vishal S
-- Krishna Leela Amritha Nandini
-- Suriya KP
-- SP Saran Dharshan
+<table style="width:100%; text-align:center;border: none;">
+    <tr>
+        <td style="width:33.33%;"><img src="https://github.com/VishalTheHuman.png/" style="width:100%; height:auto;"></td>
+        <td style="width:33.33%;"><img src="https://github.com/amri-tah.png/" style="width:100%; height:auto;"></td>
+        <td style="width:33.33%;"><img src="https://github.com/SaranDharshanSP.png/" style="width:100%; height:auto;"></td>
+	<td style="width:33.33%;"><img src="https://github.com/SURIYA-KP.png/" style="width:100%; height:auto;"></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/VishalTheHuman" style="display:block; margin:auto;">@VishalTheHuman</a></td>
+        <td><a href="https://github.com/amri-tah" style="display:block; margin:auto;">@amri-tah</a></td>
+        <td><a href="https://github.com/SaranDharshanSP" style="display:block; margin:auto;">@SaranDharshanSP</a></td>
+	<td><a href="https://github.com/SURIYA-KP" style="display:block; margin:auto;">@SURIYA-KP</a></td>
+    </tr>
+    <tr>
+        <td><b style="display:block; margin:auto;">Vishal S</b></td>
+        <td><b style="display:block; margin:auto;">Amritha Nandini</b></td>
+        <td><b style="display:block; margin:auto;">Saran Dharshan S P</b></td>
+	<td><b style="display:block; margin:auto;">Suriya KP</b></td>
+    </tr>
+</table>
 
 **Submission Date:** 13 October 2025
 
