@@ -1,6 +1,7 @@
 # Amazon ML Challenge 2025: Smart Product Pricing Challenge
 
-**Team Name:** CTRL + ALT + DEV
+**Team Name:** CTRL + ALT + DEV  
+**Rank :** 8 ([Results Link](https://docs.google.com/spreadsheets/d/e/2PACX-1vSA000odhpNXaEJTqAdDbwSj3T_fjH-w7QTCrCPIP54VL0bQUTVvok4hVFRpPCwsYTXY0BAvEUDQ2XS/pubhtml))  
 
 **Team Members:** 
 
