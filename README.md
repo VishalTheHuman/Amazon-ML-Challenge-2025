@@ -22,7 +22,7 @@
     </tr>
     <tr>
         <td><b style="display:block; margin:auto;">Vishal S</b></td>
-        <td><b style="display:block; margin:auto;">Amritha Nandini</b></td>
+        <td><b style="display:block; margin:auto;">Krishna Leela Amritha Nandini</b></td>
         <td><b style="display:block; margin:auto;">Saran Dharshan S P</b></td>
 	<td><b style="display:block; margin:auto;">Suriya KP</b></td>
     </tr>
